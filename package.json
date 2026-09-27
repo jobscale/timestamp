@@ -1,0 +1,19 @@
+{
+  "name": "timestamp",
+  "version": "0.0.1",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jobscale/timestamp.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/jobscale/timestamp/issues"
+  },
+  "homepage": "https://github.com/jobscale/timestamp#readme",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
