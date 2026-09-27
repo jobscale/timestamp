@@ -1,10 +1,16 @@
 export const createTimezone = (opts = {}) => {
   const {
     timeZone = 'Asia/Tokyo',
+    offset = true,
+    milliseconds = false,
+    separator = false,
   } = opts;
   return (opts = {}) => {
     const {
-      ts = Date.now(), iso = false, ms = false, tz = true,
+      ts = Date.now(),
+      iso = separator,
+      ms = milliseconds,
+      tz = offset,
     } = opts;
     const instant = Temporal.Instant.fromEpochMilliseconds(new Date(ts));
     const zonedDateTime = instant.toZonedDateTimeISO(timeZone);
