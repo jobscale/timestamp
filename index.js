@@ -29,9 +29,9 @@ export const createTimezone = (opts = {}) => {
 
 export const formatTimestamp = createTimezone();
 
-export const formatDuration = (start, end) => {
-  const startInstant = new Date(start).toTemporalInstant();
-  const endInstant = new Date(end).toTemporalInstant();
+export const formatDuration = (target, someone = Date.now()) => {
+  const startInstant = new Date(target).toTemporalInstant();
+  const endInstant = new Date(someone).toTemporalInstant();
   const duration = endInstant.since(startInstant, { largestUnit: 'hour' });
   const totalHours = Math.floor(Math.abs(duration.total({ unit: 'hour' })));
   const minutes = Math.abs(duration.minutes);
