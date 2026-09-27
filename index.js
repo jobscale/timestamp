@@ -1,14 +1,14 @@
 export const createTimezone = (opts = {}) => {
   const {
     timeZone = 'Asia/Tokyo',
-    offset = true,
+    useSpace = true,
     milliseconds = false,
-    separator = false,
+    offset = true,
   } = opts;
   return (opts = {}) => {
     const {
       ts = Date.now(),
-      iso = separator,
+      space = useSpace,
       ms = milliseconds,
       tz = offset,
     } = opts;
@@ -22,7 +22,7 @@ export const createTimezone = (opts = {}) => {
         fractionalSecondDigits: ms ? 3 : 0,
       }),
     };
-    if (!iso) res.ts = res.ts.replace('T', ' ');
+    if (space) res.ts = res.ts.replace('T', ' ');
     return res.ts;
   };
 };
