@@ -28,3 +28,16 @@ export const createTimezone = (opts = {}) => {
 };
 
 export const formatTimestamp = createTimezone();
+
+export const formatDuration = (start, end) => {
+  const startInstant = new Date(start).toTemporalInstant();
+  const endInstant = new Date(end).toTemporalInstant();
+  const duration = endInstant.since(startInstant, { largestUnit: 'hour' });
+  const totalHours = Math.floor(Math.abs(duration.total({ unit: 'hour' })));
+  const minutes = Math.abs(duration.minutes);
+  const seconds = Math.abs(duration.seconds);
+  const hh = String(totalHours);
+  const mm = String(minutes).padStart(2, '0');
+  const ss = String(seconds).padStart(2, '0');
+    return `${totalHours ? `${hh}:` : ''}${mm}:${ss}`;
+};
