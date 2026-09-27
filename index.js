@@ -36,8 +36,8 @@ export const formatDuration = (target, someone = Date.now()) => {
   const totalHours = Math.floor(Math.abs(duration.total({ unit: 'hour' })));
   const minutes = Math.abs(duration.minutes);
   const seconds = Math.abs(duration.seconds);
-  const hh = String(totalHours);
-  const mm = String(minutes).padStart(2, '0');
-  const ss = String(seconds).padStart(2, '0');
-    return `${totalHours ? `${hh}:` : ''}${mm}:${ss}`;
+  const hh = totalHours ? `${totalHours}:` : '';
+  const mm = totalHours ? String(minutes).padStart(2, '0') : minutes ? `${minutes}:` : '';
+  const ss = totalHours || minutes ? String(seconds).padStart(2, '0') : seconds;
+  return `${hh}${mm}${ss}`;
 };
